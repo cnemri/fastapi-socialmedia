@@ -1,0 +1,7 @@
+alembic init alembic
+alembic revision -m "create posts table"
+# modify revison code
+alembic current
+alembic upgrade c1d23186cdee
+alembic upgrade d7ade7a4b2da
+alembic downgrade c1d23186cdee
