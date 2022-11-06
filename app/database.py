@@ -13,19 +13,6 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
-while True:
-    try:
-        conn = psycopg2.connect(
-            host = 'localhost', database = 'fastapi', user = 'postgres', password = 'Opera007', cursor_factory = RealDictCursor)
-        cursor=conn.cursor()
-        print('Database connection established.')
-        break
-    except Exception as error:
-        print('Database connection failed.')
-        print(error)
-        time.sleep(2)
-
-
 def get_db():
     db=SessionLocal()
     try:
