@@ -7,6 +7,7 @@ User=cnemri
 Group=cnemri
 WorkingDirectory=/home/cnemri/app/src 
 Environment="PATH=/home/cnemri/app/venv/bin"
+EnvironmentFile="/home/cnemri/.env"
 ExecStart=/home/cnemri/app/venv/bin/gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:8000
 
 [Install]
