@@ -74,15 +74,15 @@ def update_post(id: int, post: schemas.PostCreate, db: Session = Depends(get_db)
     query = db.query(models.Post).filter(models.Post.id == id)
     updated_post = query.first()
 
-    if update_post is None:
+    if updated_post is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail='Post with id {} not found'.format(id))
 
     if updated_post.owner_id != current_user.id:
         raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN, detail='Not enough permissions')
+            status_code = status.HTTP_403_FORBIDDEN, detail = 'Not enough permissions')
 
-    query.update(post.dict(), synchronize_session=False)
+    query.update(post.dict(), synchronize_session = False)
     db.commit()
     db.refresh(updated_post)
     return updated_post
