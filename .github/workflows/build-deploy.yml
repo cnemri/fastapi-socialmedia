@@ -84,7 +84,7 @@ jobs:
       - name: deploy to ubuntu server
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.UBUNTU_HOST }}
+          host: ${{secrets.UBUNTU_HOST}}
           username: ${{ secrets.UBUNTU_USERNAME }}
           key: ${{ secrets.UBUNTU_SSH_KEY }}
           port: ${{ secrets.UBUNTU_SSH_PORT }}
