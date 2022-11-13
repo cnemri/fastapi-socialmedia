@@ -4,11 +4,12 @@ from sqlalchemy.orm import sessionmaker
 from app import models
 from app.main import app
 from app.database import get_db, Base
+from app.config import settings
 from app.oauth2 import create_access_token
 import pytest
 
 
-SQLALCHEMY_DATABASE_URL = 'postgresql://postgres:password123@localhost/fastapi_test'
+SQLALCHEMY_DATABASE_URL = f'postgresql://{settings.database_username}:{settings.database_password}@{settings.database_hostname}:{settings.database_port}/{settings.database_name}'
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
 TestingSessionLocal = sessionmaker(
@@ -105,6 +106,7 @@ def test_posts(test_user, test_user2, session):
     session.commit()
     posts = session.query(models.Post).all()
     return posts
+
 
 @pytest.fixture
 def test_vote(test_posts, session, test_user):
