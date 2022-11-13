@@ -8,7 +8,7 @@ from app.oauth2 import create_access_token
 import pytest
 
 
-SQLALCHEMY_DATABASE_URL = 'postgresql://postgres:Opera007@localhost/fastapi_test'
+SQLALCHEMY_DATABASE_URL = 'postgresql://postgres:password123@localhost/fastapi_test'
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
 TestingSessionLocal = sessionmaker(
